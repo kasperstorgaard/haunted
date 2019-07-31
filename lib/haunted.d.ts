@@ -13,11 +13,11 @@ export function useCallback(fn: Function, inputs: any[]): Function;
 
 export function useEffect(fn: () => Function | void, inputs?: any[]): void;
 
-export function useState(intialValue?: any): [any, Function];
+export function useState<M = any>(intialValue?: M): [M, (val: M) => void];
 
 export function useReducer(reducer: (state: any, action: any) => any, initialState: any): [any, Function];
 
-export function useMemo(fn: Function, values: any[]): any;
+export function useMemo<F extends (...args: any) => any>(fn: F, values: any[]): ReturnType<F>;
 
 export function useRef(initialValue: any): { current: any};
 
@@ -36,4 +36,5 @@ export function hook(Hook: Function): Function;
 export class Hook {
     id: number;
     el: HTMLElement;
+    constructor(id: number, el: HTMLElement)
 }
